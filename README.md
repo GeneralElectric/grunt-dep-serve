@@ -9,25 +9,17 @@ local dependencies.
 
 ### Why do we need this?
 
-Paths to a project's Bower dependencies differ depending on whether you are in the project itself (dependencies in a
-Bower managed directory in the project, e.g. /bower_components) vs. using the project 'downstream' (dependencies are
-siblings of the project). Ideally we want to be able to 'run' our project both on its own and downstream as a dependency
-without a lot of magic.
+Paths to a project's Bower dependencies differ depending on whether you are in the project itself vs. using the project
+'downstream'. From the project repo, dependencies are in a Bower managed directory in the project, e.g. /bower_components.
+When the project is consumed downstream, its dependencies are siblings of itself inside the consuming project's Bower
+managed directory. We need dependency paths to resolve no matter if the project runs from its own repo or downstream as
+part of another project.
 
-For the 'downstream' case where all dependencies are siblings, we need relative paths to start with `../`,
-which is the correct relative path for the 'downstream' case and doesn't hard code the name of the Bower managed
-directory. For the case of developing in a given repo, we also need to specify `includePaths: ['bower_components/*']` in the
-'sass' task to pin the relative root directory to one-level deep inside 'bower_components' and thus enable the project's `../`
-paths to resolve when building the project itself.
-
-Bower manages dependencies in a flat structure, so when consumed downstream a component can assume all its dependencies are flat siblings of it.
-Making this assumption works great and means that it can be agnostic of the name of the directory used by bower to install dependencies
-(defaults to 'bower_components' but can be configured by a developer).
-
-However, when run locally as part of test fixtures or examples in the component's repo itself, however, the component's dependencies are not siblings.
-For the purposes of running locally, then, this task copies external dependencies (from bower) and component html + css into a 'build-local'
-directory so the component can be used in local tests, examples, etc.
-
+Paths to dependencies should _assume dependency projects are siblings_ and thus have relative paths starting with `../`
+to pop up into the bower directory and find the sibling dependencies. When running from the repo itself these paths will
+404 since dependencies in that case are not siblings.  `grunt depserve` starts an instance of [http-server](https://github.com/nodeapps/http-server)
+with the `--proxy` option set to retry potential 404s using the dependencies directory (e.g. bower_components) as a root
+so the paths resolve correctly. You can do something similar with most http servers.
 
 ###Usage
 
@@ -55,8 +47,6 @@ Hit ctrl+c to exit.
 
 ```
 depserve: {
-    options: {
-        depDir: '/bower_components'
-    }
+    depDir: '/bower_components'
 }
 ```

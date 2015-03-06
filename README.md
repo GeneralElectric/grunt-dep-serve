@@ -47,6 +47,8 @@ Hit ctrl+c to exit.
 
 ```
 depserve: {
-    depDir: '/bower_components'
+    options: {
+        open: '/test/ui/fixtures/my-fixture.html'
+    }
 }
 ```

@@ -15,7 +15,7 @@ When the project is consumed downstream, its dependencies are siblings of itself
 managed directory. We need dependency paths to resolve no matter if the project runs from its own repo or downstream as
 part of another project.
 
-Paths to dependencies should _assume dependency projects are siblings_ and thus have relative paths starting with `../`
+Paths to dependencies should _assume dependency projects are siblings_ (assume the 'downstream' case) and thus have relative paths starting with `../`
 to pop up into the bower directory and find the sibling dependencies. When running from the repo itself these paths will
 404 since dependencies in that case are not siblings.  `grunt depserve` starts an instance of [http-server](https://github.com/nodeapps/http-server)
 with the `--proxy` option set to retry potential 404s using the dependencies directory (e.g. bower_components) as a root

@@ -41,7 +41,7 @@ module.exports = function(grunt) {
                 console.log("Local http server listening at http://localhost:" + foundPort + "/ with dependencies proxied from " + opts.depDir);
                 console.log("ctrl+c to exit");
                 if (opts.open) {
-                    opener("http://localhost:" +  foundPort);
+                    opener("http://localhost:" +  foundPort + opts.open);
                 }
             });
         });
@@ -50,7 +50,7 @@ module.exports = function(grunt) {
     grunt.registerTask('depserve', 'Starts http-server in a way that serves dependencies correctly', function () {
         // Merge task-specific and/or target-specific options with these defaults.
         var opts = merge(/*clone*/true, this.options(_defaultOptions), this.data);
-        var done = this.async();
+        var done = this.async(); //we make this task async but intentionally never call done(), so it stays running until ctrl+c is hit.
         startLocalHttpServer(opts);
     });
 };

@@ -26,7 +26,7 @@ so the paths resolve correctly. You can do something similar with most http serv
 Options:
 
 * `depDir`: Path from project root to the Bower dependencies directory. Server will look in here before 404-ing on a request. Defaults to '/bower_components'.
-* `open`: Whether to open a browser tab upon server start automatically. Defaults to true.
+* `open`: Page to automatically open upon server start. Defaults to '/'. Set to null to not open anything by default.
 
 Include in package.json:
 

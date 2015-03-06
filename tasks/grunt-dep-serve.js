@@ -21,7 +21,7 @@ module.exports = function(grunt) {
 
     var _defaultOptions = {
         depDir: '/bower_components',
-        open: true
+        open: '/'
     };
 
     function startLocalHttpServer(opts) {

@@ -13,7 +13,7 @@
 var httpServer = require('http-server'),
     portfinder = require('portfinder'),
     merge = require('merge'),
-    opener = require('opener')
+    opener = require('opener');
 
 module.exports = function(grunt) {
 

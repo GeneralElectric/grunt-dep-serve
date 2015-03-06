@@ -39,10 +39,12 @@ module.exports = function(grunt) {
 
             localHttpServer.listen(foundPort, "0.0.0.0", function() {
                 console.log("Local http server listening at http://localhost:" + foundPort + "/ with dependencies proxied from " + opts.depDir);
-                console.log("ctrl+c to exit");
                 if (opts.open) {
-                    opener("http://localhost:" +  foundPort + opts.open);
+                    var openPath = "http://localhost:" +  foundPort + opts.open;
+                    console.log("Opening " + openPath + " in browser...");
+                    opener(openPath);
                 }
+                console.log("ctrl+c to exit");
             });
         });
     }

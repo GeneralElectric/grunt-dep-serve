@@ -1,0 +1,21 @@
+{
+    "name": "grunt-dep-serve",
+    "description": "Grunt task for serving local files, incl. rerouting 404s for bower dependencies...see README.md",
+    "repository": {
+        "type": "git",
+        "url": "https://github.sw.ge.com/jreichenberg/grunt-dep-serve.git"
+    },
+    "version": "0.0.1",
+    "main": "./task/index",
+    "dependencies": {
+        "portfinder": "~0.2.1",
+        "merge": "~1.2.0",
+        "opener": "~1.4.0"
+    },
+    "devDependencies": {
+        "grunt": "~0.4.5"
+    },
+    "scripts": {
+        "install": "node verifyGlobalPackages.js"
+    }
+}

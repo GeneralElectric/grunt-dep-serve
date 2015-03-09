@@ -21,6 +21,24 @@ to pop up into the bower directory and find the sibling dependencies. When runni
 with the `--proxy` option set to retry potential 404s using the dependencies directory (e.g. /bower_components) as a root
 so the paths resolve correctly. You can do something similar with most http servers.
 
+#### Other options
+
+Instead of using grunt-dep-serve, you could instead...
+
+* Let dependencies 404 when running the project locally, and 're-declare' them with their correct paths from the local-run
+perspective within all examples, demos and test fixtures in the project.
+    * PRO: grunt-dep-serve not needed.
+    * CON: Will still see 404s in console, though they can be ignored because you will...
+    * CON: Need to re-declare all those paths in your demos and test fixture files.
+* Assume your project _always_ has its dependencies outside as siblings by adding a `.bowerrc` file that maps dependencies
+to `../`.
+    * PRO: grunt-dep-serve not needed.
+    * CON: Splatters dependencies as siblings _'above'_ the project, making it difficult to clean up and/or distinguish bower dependencies from actual project directories.
+
+No matter what, _always_ make sure your project's demos/examples/fixtures work from within the project itself and declare
+dependency paths such that the project works without assuming the name of the Bower-managed directory in any deployable
+code...its 'bower_components' by default, but that configuration is up to the consuming application.
+
 ###Usage
 
 Options:

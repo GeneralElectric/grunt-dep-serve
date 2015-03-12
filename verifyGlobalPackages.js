@@ -20,6 +20,13 @@ var _verifyGlobalPackage = function(pkgName, version, link) {
                     }
                 });
             }
+            else {
+                if (link) {
+                    exec('npm link ' + pkgName, function(err, stdout, stderr) {
+                        console.log(stdout);
+                    });
+                }
+            }
         });
     }
     else {

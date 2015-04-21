@@ -6,6 +6,8 @@ Grunt task 'depserve'
 This grunt task starts an instance of [http-server](https://github.com/nodeapps/http-server) properly configured to serve
 local dependencies.
 
+See also an alternate solution: https://github.com/PolymerLabs/polyserve
+
 
 ### Why do we need this?
 
@@ -34,6 +36,7 @@ perspective within all examples, demos and test fixtures in the project.
 to `../`.
     * PRO: grunt-dep-serve not needed.
     * CON: Splatters dependencies as siblings _'above'_ the project, making it difficult to clean up and/or distinguish bower dependencies from actual project directories.
+    * CON: Bower install might overwrite existing work in the `../` directory if it has the same name as a bower dependency
 
 No matter what, _always_ make sure your project's demos/examples/fixtures work from within the project itself and declare
 dependency paths such that the project works without assuming the name of the Bower-managed directory in any deployable

@@ -50,7 +50,7 @@ Include in package.json:
 
 ```
 "devDependencies": {
-    "grunt-dep-serve": "git+https://github.sw.ge.com/jreichenberg/grunt-dep-serve.git#master",
+    "grunt-dep-serve": "git+https://github.com/GeneralElectric/grunt-dep-serve.git#master",
 }
 ```
 

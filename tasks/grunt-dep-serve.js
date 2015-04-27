@@ -32,7 +32,7 @@ module.exports = function(grunt) {
 
             var localHttpServer = httpServer.createServer({
                 root : './',
-                cache: 0,
+                cache: -1,
                 silent: false,
                 proxy: 'http://0.0.0.0:' + foundPort + opts.depDir //this is the magic step...reroutes potential 404s to try the dependencies directory
             });

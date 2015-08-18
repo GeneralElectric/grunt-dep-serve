@@ -47,7 +47,7 @@ module.exports = function(grunt) {
                 }
                 if (opts.livereload) {
                     var livereloadServer = livereload.createServer();
-                    console.log('Liveserve is watching: ', opts.livereload)
+                    console.log('LiveReload is watching: ', opts.livereload)
                     livereloadServer.watch(opts.livereload);
                 }
                 console.log("ctrl+c to exit");

@@ -8,9 +8,10 @@
     "version": "0.0.1",
     "main": "./task/index",
     "dependencies": {
-        "portfinder": "~0.2.1",
+        "livereload": "^0.3.7",
         "merge": "~1.2.0",
-        "opener": "~1.4.0"
+        "opener": "~1.4.0",
+        "portfinder": "~0.2.1"
     },
     "devDependencies": {
         "grunt": "~0.4.5"

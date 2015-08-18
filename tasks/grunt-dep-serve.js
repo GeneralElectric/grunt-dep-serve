@@ -13,7 +13,8 @@
 var httpServer = require('http-server'),
     portfinder = require('portfinder'),
     merge = require('merge'),
-    opener = require('opener');
+    opener = require('opener'),
+    livereload = require('livereload');
 
 module.exports = function(grunt) {
 
@@ -43,6 +44,11 @@ module.exports = function(grunt) {
                     var openPath = "http://localhost:" +  foundPort + opts.open;
                     console.log("Opening " + openPath + " in browser...");
                     opener(openPath);
+                }
+                if (opts.livereload) {
+                    var livereloadServer = livereload.createServer();
+                    console.log('Liveserve is watching: ', opts.livereload)
+                    livereloadServer.watch(opts.livereload);
                 }
                 console.log("ctrl+c to exit");
             });

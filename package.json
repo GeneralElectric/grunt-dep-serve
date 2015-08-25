@@ -5,7 +5,7 @@
         "type": "git",
         "url": "https://github.sw.ge.com/jreichenberg/grunt-dep-serve.git"
     },
-    "version": "0.0.1",
+    "version": "0.0.2",
     "main": "./task/index",
     "dependencies": {
         "livereload": "^0.3.7",

@@ -35,10 +35,10 @@ module.exports = function(grunt) {
                 root : './',
                 cache: -1,
                 silent: false,
-                proxy: 'http://0.0.0.0:' + foundPort + opts.depDir //this is the magic step...reroutes potential 404s to try the dependencies directory
+                proxy: 'http://localhost:' + foundPort + opts.depDir //this is the magic step...reroutes potential 404s to try the dependencies directory
             });
 
-            localHttpServer.listen(foundPort, "0.0.0.0", function() {
+            localHttpServer.listen(foundPort, "localhost", function() {
                 console.log("Local http server listening at http://localhost:" + foundPort + "/ with dependencies proxied from " + opts.depDir);
                 if (opts.open) {
                     var openPath = "http://localhost:" +  foundPort + opts.open;
